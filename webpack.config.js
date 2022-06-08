@@ -13,6 +13,14 @@ module.exports = {
       directory: "./dist",
     },
   },
+  entry: {
+    'main': './src/index.js',
+    'hoge': './src/hoge.js',
+  },
+  output: {
+    path: __dirname + '/dist',
+    filename: '[name].bundle.js',
+  },
   module: {
     rules: [
       {
