@@ -3,6 +3,7 @@ body {
 }
 
 .container {
+  color: blue;
   height: 100vh;
   overflow: hidden;
   display: flex;
