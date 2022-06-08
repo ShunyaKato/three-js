@@ -1,5 +1,5 @@
 import { Hello } from './js/hello'
-import './css/style.css'
+import './scss/style.scss'
 
 const jiro = new Hello('Jiro')
 jiro.greet()
