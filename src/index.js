@@ -1,5 +1,5 @@
 // import { Hello } from './js/hello'
-import './js/three_test'
+// import './js/three_test'
 import './js/three_train01'
 import './js/three_train02'
 import './js/three_train03'
