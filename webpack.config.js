@@ -10,12 +10,13 @@ module.exports = {
   devtool: isDev ? "source-map" : undefined,
   devServer: {
     static: {
-      directory: "./dist/js",
+      directory: "./dist",
     },
   },
   entry: {
     'main': './src/bundle/index.js',
     'material': './src/bundle/material.js',
+    'light': './src/bundle/light.js',
   },
   output: {
     path: __dirname + '/dist/js',
