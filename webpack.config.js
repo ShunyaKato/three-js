@@ -15,7 +15,7 @@ module.exports = {
   },
   entry: {
     'main': './src/index.js',
-    'basic': './src/basic.js',
+    'material': './src/material.js',
   },
   output: {
     path: __dirname + '/dist',
