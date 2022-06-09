@@ -17,6 +17,7 @@ module.exports = {
     'main': './src/bundle/index.js',
     'material': './src/bundle/material.js',
     'light': './src/bundle/light.js',
+    'shade': './src/bundle/shade.js',
   },
   output: {
     path: __dirname + '/dist/js',
