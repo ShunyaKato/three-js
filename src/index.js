@@ -6,6 +6,7 @@ import './js/three_train03'
 import './js/three_train04'
 import './js/three_train05'
 import './js/three_train06'
+import './js/three_train07'
 import './scss/style.scss'
 
 // const jiro = new Hello('Jiro')
