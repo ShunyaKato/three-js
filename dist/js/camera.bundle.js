@@ -30,23 +30,23 @@ eval("\n\nmodule.exports = function (i) {\n  return i[1];\n};\n\n//# sourceURL=w
 
 /***/ }),
 
-/***/ "./src/bundle/shade.js":
-/*!*****************************!*\
-  !*** ./src/bundle/shade.js ***!
-  \*****************************/
+/***/ "./src/bundle/camera.js":
+/*!******************************!*\
+  !*** ./src/bundle/camera.js ***!
+  \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_shade_three_shade01__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../js/shade/three_shade01 */ \"./src/js/shade/three_shade01.js\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../scss/style.scss */ \"./src/scss/style.scss\");\n\n\n\n//# sourceURL=webpack://three-js/./src/bundle/shade.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_camera_three_camera01__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../js/camera/three_camera01 */ \"./src/js/camera/three_camera01.js\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../scss/style.scss */ \"./src/scss/style.scss\");\n\n\n\n//# sourceURL=webpack://three-js/./src/bundle/camera.js?");
 
 /***/ }),
 
-/***/ "./src/js/shade/three_shade01.js":
-/*!***************************************!*\
-  !*** ./src/js/shade/three_shade01.js ***!
-  \***************************************/
+/***/ "./src/js/camera/three_camera01.js":
+/*!*****************************************!*\
+  !*** ./src/js/camera/three_camera01.js ***!
+  \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n // ページの読み込みを待つ\n\nwindow.addEventListener('DOMContentLoaded', init);\n\nfunction init() {\n  // サイズを指定\n  var width = 960;\n  var height = 540; // レンダラーを作成\n\n  var renderer = new three__WEBPACK_IMPORTED_MODULE_0__.WebGLRenderer({\n    canvas: document.querySelector('#shade01'),\n    antialias: true\n  });\n  renderer.setPixelRatio(window.devicePixelRatio);\n  renderer.setSize(width, height); // レンダラー：シャドウを有効にする\n\n  renderer.shadowMap.enabled = true; // シーンを作成\n\n  var scene = new three__WEBPACK_IMPORTED_MODULE_0__.Scene(); // カメラを作成\n\n  var camera = new three__WEBPACK_IMPORTED_MODULE_0__.PerspectiveCamera(45, width / height);\n  camera.position.set(20, 20, 20);\n  camera.lookAt(new three__WEBPACK_IMPORTED_MODULE_0__.Vector3(0, 0, 0)); // 床を作成\n\n  var meshFloor = new three__WEBPACK_IMPORTED_MODULE_0__.Mesh(new three__WEBPACK_IMPORTED_MODULE_0__.BoxGeometry(2000, 0.1, 2000), new three__WEBPACK_IMPORTED_MODULE_0__.MeshStandardMaterial({\n    color: 0x808080,\n    roughness: 0.0\n  })); // 影を受け付ける\n\n  meshFloor.receiveShadow = true;\n  scene.add(meshFloor); // オブジェクトを作成\n\n  var meshKnot = new three__WEBPACK_IMPORTED_MODULE_0__.Mesh(new three__WEBPACK_IMPORTED_MODULE_0__.TorusKnotGeometry(3, 1, 100, 16), new three__WEBPACK_IMPORTED_MODULE_0__.MeshStandardMaterial({\n    color: 0xaa0000,\n    roughness: 0.0\n  }));\n  meshKnot.position.set(0, 5, 0); // 影を落とす\n\n  meshKnot.castShadow = true;\n  scene.add(meshKnot); // 照明を作成\n\n  var light = new three__WEBPACK_IMPORTED_MODULE_0__.SpotLight(0xffffff, 2, 100, Math.PI / 4, 1); // ライトに影を有効にする\n\n  light.castShadow = true;\n  light.shadow.mapSize.width = 2048;\n  light.shadow.mapSize.height = 2048;\n  scene.add(light);\n  tick(); // 毎フレーム時に実行されるループイベントです\n\n  function tick() {\n    renderer.render(scene, camera); // レンダリング\n    // 照明の位置を更新\n\n    var t = Date.now() / 500;\n    var r = 20.0;\n    var lx = r * Math.cos(t);\n    var lz = r * Math.sin(t);\n    var ly = 20.0 + 5.0 * Math.sin(t / 3.0);\n    light.position.set(lx, ly, lz);\n    requestAnimationFrame(tick);\n  }\n}\n\n//# sourceURL=webpack://three-js/./src/js/shade/three_shade01.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n // ページの読み込みを待つ\n\nwindow.addEventListener('DOMContentLoaded', init);\n\nfunction init() {\n  // サイズを指定\n  var width = 960;\n  var height = 540; // レンダラーを作成\n\n  var renderer = new three__WEBPACK_IMPORTED_MODULE_0__.WebGLRenderer({\n    canvas: document.querySelector('#camera01'),\n    antialias: true\n  });\n  renderer.setPixelRatio(window.devicePixelRatio);\n  renderer.setSize(width, height); // レンダラー：シャドウを有効にする\n\n  renderer.shadowMap.enabled = true; // シーンを作成\n\n  var scene = new three__WEBPACK_IMPORTED_MODULE_0__.Scene(); // カメラを作成\n\n  var camera = new three__WEBPACK_IMPORTED_MODULE_0__.PerspectiveCamera(45, width / height);\n  camera.position.set(20, 20, 20);\n  camera.lookAt(new three__WEBPACK_IMPORTED_MODULE_0__.Vector3(0, 0, 0)); // 床を作成\n\n  var meshFloor = new three__WEBPACK_IMPORTED_MODULE_0__.Mesh(new three__WEBPACK_IMPORTED_MODULE_0__.BoxGeometry(2000, 0.1, 2000), new three__WEBPACK_IMPORTED_MODULE_0__.MeshStandardMaterial({\n    color: 0x808080,\n    roughness: 0.0\n  })); // 影を受け付ける\n\n  meshFloor.receiveShadow = true;\n  scene.add(meshFloor); // オブジェクトを作成\n\n  var meshKnot = new three__WEBPACK_IMPORTED_MODULE_0__.Mesh(new three__WEBPACK_IMPORTED_MODULE_0__.TorusKnotGeometry(3, 1, 100, 16), new three__WEBPACK_IMPORTED_MODULE_0__.MeshStandardMaterial({\n    color: 0xaa0000,\n    roughness: 0.0\n  }));\n  meshKnot.position.set(0, 5, 0); // 影を落とす\n\n  meshKnot.castShadow = true;\n  scene.add(meshKnot); // 照明を作成\n\n  var light = new three__WEBPACK_IMPORTED_MODULE_0__.SpotLight(0xffffff, 2, 100, Math.PI / 4, 1); // ライトに影を有効にする\n\n  light.castShadow = true;\n  light.shadow.mapSize.width = 2048;\n  light.shadow.mapSize.height = 2048;\n  scene.add(light);\n  tick(); // 毎フレーム時に実行されるループイベントです\n\n  function tick() {\n    renderer.render(scene, camera); // レンダリング\n    // 照明の位置を更新\n\n    var t = Date.now() / 500;\n    var r = 20.0;\n    var lx = r * Math.cos(t);\n    var lz = r * Math.sin(t);\n    var ly = 20.0 + 5.0 * Math.sin(t / 3.0);\n    light.position.set(lx, ly, lz);\n    requestAnimationFrame(tick);\n  }\n}\n\n//# sourceURL=webpack://three-js/./src/js/camera/three_camera01.js?");
 
 /***/ }),
 
@@ -217,7 +217,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/bundle/shade.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/bundle/camera.js");
 /******/ 	
 /******/ })()
 ;

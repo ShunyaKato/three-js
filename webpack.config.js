@@ -18,6 +18,7 @@ module.exports = {
     'material': './src/bundle/material.js',
     'light': './src/bundle/light.js',
     'shade': './src/bundle/shade.js',
+    'camera': './src/bundle/camera.js',
   },
   output: {
     path: __dirname + '/dist/js',
