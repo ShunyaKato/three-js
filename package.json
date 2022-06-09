@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "rectarealightuniformslib": "^1.0.0",
     "three": "^0.141.0",
     "three-orbitcontrols": "^2.110.3",
     "webpack": "^5.73.0",
