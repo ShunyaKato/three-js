@@ -15,7 +15,7 @@ module.exports = {
   },
   entry: {
     'main': './src/index.js',
-    'hoge': './src/hoge.js',
+    'basic': './src/basic.js',
   },
   output: {
     path: __dirname + '/dist',

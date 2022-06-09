@@ -10,13 +10,13 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/hoge.js":
-/*!*********************!*\
-  !*** ./src/hoge.js ***!
-  \*********************/
+/***/ "./src/basic.js":
+/*!**********************!*\
+  !*** ./src/basic.js ***!
+  \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_hello__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/hello */ \"./src/js/hello.js\");\n\nvar jiro = new _js_hello__WEBPACK_IMPORTED_MODULE_0__.Hello('Jiro');\njiro.greet();\nconsole.log('run');\n\n//# sourceURL=webpack://three-js/./src/hoge.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_hello__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/hello */ \"./src/js/hello.js\");\n\nvar jiro = new _js_hello__WEBPACK_IMPORTED_MODULE_0__.Hello('Jiro');\njiro.greet();\nconsole.log('run');\n\n//# sourceURL=webpack://three-js/./src/basic.js?");
 
 /***/ }),
 
@@ -90,7 +90,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/hoge.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/basic.js");
 /******/ 	
 /******/ })()
 ;
