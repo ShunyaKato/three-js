@@ -30,23 +30,23 @@ eval("\n\nmodule.exports = function (i) {\n  return i[1];\n};\n\n//# sourceURL=w
 
 /***/ }),
 
-/***/ "./src/bundle/sprite.js":
-/*!******************************!*\
-  !*** ./src/bundle/sprite.js ***!
-  \******************************/
+/***/ "./src/bundle/group.js":
+/*!*****************************!*\
+  !*** ./src/bundle/group.js ***!
+  \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_sprite_three_sprite01__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../js/sprite/three_sprite01 */ \"./src/js/sprite/three_sprite01.js\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../scss/style.scss */ \"./src/scss/style.scss\");\n\n\n\n//# sourceURL=webpack://three-js/./src/bundle/sprite.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_group_three_group01__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../js/group/three_group01 */ \"./src/js/group/three_group01.js\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../scss/style.scss */ \"./src/scss/style.scss\");\n\n\n\n//# sourceURL=webpack://three-js/./src/bundle/group.js?");
 
 /***/ }),
 
-/***/ "./src/js/sprite/three_sprite01.js":
-/*!*****************************************!*\
-  !*** ./src/js/sprite/three_sprite01.js ***!
-  \*****************************************/
+/***/ "./src/js/group/three_group01.js":
+/*!***************************************!*\
+  !*** ./src/js/group/three_group01.js ***!
+  \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n // ページの読み込みを待つ\n\nwindow.addEventListener('DOMContentLoaded', init);\n\nfunction init() {\n  // サイズを指定\n  var width = 960;\n  var height = 540; // レンダラーを作成\n\n  var renderer = new three__WEBPACK_IMPORTED_MODULE_0__.WebGLRenderer({\n    canvas: document.querySelector('#sprite01'),\n    antialias: true\n  });\n  renderer.setPixelRatio(window.devicePixelRatio);\n  renderer.setSize(width, height);\n  renderer.setClearColor(0xf9f9f9, 1.0); // シーンを作成\n\n  var scene = new three__WEBPACK_IMPORTED_MODULE_0__.Scene();\n  scene.fog = new three__WEBPACK_IMPORTED_MODULE_0__.Fog(0xf9f9f9, 200, 300); // カメラを作成\n\n  var camera = new three__WEBPACK_IMPORTED_MODULE_0__.PerspectiveCamera(45, width / height); // マテリアルを作成する\n\n  var material = new three__WEBPACK_IMPORTED_MODULE_0__.SpriteMaterial({\n    map: new three__WEBPACK_IMPORTED_MODULE_0__.TextureLoader().load('../img/star.png')\n  }); // フォグ（霞）を有効にする\n\n  material.fog = true; // ビルボードを作成\n\n  for (var i = 0; i < 1000; i++) {\n    var sprite = new three__WEBPACK_IMPORTED_MODULE_0__.Sprite(material); // ランダムな座標に配置\n\n    sprite.position.x = 500 * (Math.random() - 0.5);\n    sprite.position.y = 100 * Math.random() - 40;\n    sprite.position.z = 500 * (Math.random() - 0.5); // 必要に応じてスケールを調整\n\n    sprite.scale.set(10, 10, 10);\n    scene.add(sprite);\n  } // 地面を作成\n\n\n  var plane = new three__WEBPACK_IMPORTED_MODULE_0__.GridHelper(300, 10, 0x888888, 0x888888);\n  plane.position.y = -40;\n  scene.add(plane);\n  tick(); // 毎フレーム時に実行されるループイベントです\n\n  function tick() {\n    // カメラの自動移動\n    camera.position.x = 100 * Math.sin(Date.now() / 2000);\n    camera.position.z = 100 * Math.cos(Date.now() / 2000);\n    camera.position.y = 50 * Math.sin(Date.now() / 1000) + 60;\n    camera.lookAt(new three__WEBPACK_IMPORTED_MODULE_0__.Vector3(0, 0, 0));\n    renderer.render(scene, camera); // レンダリング\n\n    requestAnimationFrame(tick);\n  }\n}\n\n//# sourceURL=webpack://three-js/./src/js/sprite/three_sprite01.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n // ページの読み込みを待つ\n\nwindow.addEventListener('DOMContentLoaded', init);\n\nfunction init() {\n  // サイズを指定\n  var width = 960;\n  var height = 540; // レンダラーを作成\n\n  var renderer = new three__WEBPACK_IMPORTED_MODULE_0__.WebGLRenderer({\n    canvas: document.querySelector('#group01'),\n    antialias: true\n  });\n  renderer.setPixelRatio(window.devicePixelRatio);\n  renderer.setSize(width, height); // レンダラー：シャドウを有効に\n\n  renderer.shadowMap.enabled = true; // シーンを作成\n\n  var scene = new three__WEBPACK_IMPORTED_MODULE_0__.Scene(); // フォグを設定\n\n  scene.fog = new three__WEBPACK_IMPORTED_MODULE_0__.Fog(0x000000, 50, 2000); // カメラを作成\n\n  var camera = new three__WEBPACK_IMPORTED_MODULE_0__.PerspectiveCamera(45, width / height);\n  camera.position.set(0, 0, +1000); // グループを作成\n\n  var group = new three__WEBPACK_IMPORTED_MODULE_0__.Group();\n  scene.add(group);\n  var geometry = new three__WEBPACK_IMPORTED_MODULE_0__.BoxBufferGeometry(50, 50, 50);\n  var material = new three__WEBPACK_IMPORTED_MODULE_0__.MeshStandardMaterial();\n\n  for (var i = 0; i < 1000; i++) {\n    var mesh = new three__WEBPACK_IMPORTED_MODULE_0__.Mesh(geometry, material);\n    mesh.position.x = (Math.random() - 0.5) * 2000;\n    mesh.position.y = (Math.random() - 0.5) * 2000;\n    mesh.position.z = (Math.random() - 0.5) * 2000;\n    mesh.rotation.x = Math.random() * 2 * Math.PI;\n    mesh.rotation.y = Math.random() * 2 * Math.PI;\n    mesh.rotation.z = Math.random() * 2 * Math.PI; // グループに格納する\n\n    group.add(mesh);\n  } // 光源\n\n\n  scene.add(new three__WEBPACK_IMPORTED_MODULE_0__.DirectionalLight(0xff0000, 2));\n  scene.add(new three__WEBPACK_IMPORTED_MODULE_0__.AmbientLight(0x00ffff));\n  tick(); // 毎フレーム時に実行されるループイベントです\n\n  function tick() {\n    // グループを回す\n    group.rotateY(0.01);\n    renderer.render(scene, camera); // レンダリング\n\n    requestAnimationFrame(tick);\n  }\n}\n\n//# sourceURL=webpack://three-js/./src/js/group/three_group01.js?");
 
 /***/ }),
 
@@ -217,7 +217,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/bundle/sprite.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/bundle/group.js");
 /******/ 	
 /******/ })()
 ;

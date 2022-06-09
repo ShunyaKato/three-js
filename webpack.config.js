@@ -21,6 +21,7 @@ module.exports = {
     'camera': './src/bundle/camera.js',
     'fog': './src/bundle/fog.js',
     'sprite': './src/bundle/sprite.js',
+    'group': './src/bundle/group.js',
   },
   output: {
     path: __dirname + '/dist/js',
