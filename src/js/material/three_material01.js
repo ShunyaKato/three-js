@@ -11,7 +11,8 @@ function init() {
 
   // レンダラーを作成
   const renderer = new THREE.WebGLRenderer({
-    canvas: document.querySelector('#material01')
+    canvas: document.querySelector('#material01'),
+    antialias: true,
   });
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(width, height);
@@ -23,17 +24,18 @@ function init() {
   const camera = new THREE.PerspectiveCamera(45, width / height);
   camera.position.set(0, 0, +1000);
 
-  // 箱を作成
-  const geometry = new THREE.BoxGeometry(400, 400, 400);
-  const material = new THREE.MeshNormalMaterial();
-  const box = new THREE.Mesh(geometry, material);
-  scene.add(box);
+  // ドーナツを作成
+  const geometry = new THREE.TorusGeometry(300, 100, 64, 100);
+  const material = new THREE.MeshBasicMaterial({ color: 0x6699ff });
+  const mesh = new THREE.Mesh(geometry, material);
+  scene.add(mesh);
 
   tick();
 
   // 毎フレーム時に実行されるループイベントです
   function tick() {
-    box.rotation.y += 0.01;
+    mesh.rotation.x += 0.01
+    mesh.rotation.y += 0.01;
     renderer.render(scene, camera); // レンダリング
 
     requestAnimationFrame(tick);
