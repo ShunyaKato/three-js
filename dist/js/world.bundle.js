@@ -30,23 +30,23 @@ eval("\n\nmodule.exports = function (i) {\n  return i[1];\n};\n\n//# sourceURL=w
 
 /***/ }),
 
-/***/ "./src/bundle/group.js":
+/***/ "./src/bundle/world.js":
 /*!*****************************!*\
-  !*** ./src/bundle/group.js ***!
+  !*** ./src/bundle/world.js ***!
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_group_three_group01__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../js/group/three_group01 */ \"./src/js/group/three_group01.js\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../scss/style.scss */ \"./src/scss/style.scss\");\n\n\n\n//# sourceURL=webpack://three-js/./src/bundle/group.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_world_three_world01__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../js/world/three_world01 */ \"./src/js/world/three_world01.js\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../scss/style.scss */ \"./src/scss/style.scss\");\n\n\n\n//# sourceURL=webpack://three-js/./src/bundle/world.js?");
 
 /***/ }),
 
-/***/ "./src/js/group/three_group01.js":
+/***/ "./src/js/world/three_world01.js":
 /*!***************************************!*\
-  !*** ./src/js/group/three_group01.js ***!
+  !*** ./src/js/world/three_world01.js ***!
   \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n // ページの読み込みを待つ\n\nwindow.addEventListener('DOMContentLoaded', init);\n\nfunction init() {\n  // サイズを指定\n  var width = 960;\n  var height = 540; // レンダラーを作成\n\n  var renderer = new three__WEBPACK_IMPORTED_MODULE_0__.WebGLRenderer({\n    canvas: document.querySelector('#group01'),\n    antialias: true\n  });\n  renderer.setPixelRatio(window.devicePixelRatio);\n  renderer.setSize(width, height); // シーンを作成\n\n  var scene = new three__WEBPACK_IMPORTED_MODULE_0__.Scene(); // フォグを設定\n\n  scene.fog = new three__WEBPACK_IMPORTED_MODULE_0__.Fog(0x000000, 50, 2000); // カメラを作成\n\n  var camera = new three__WEBPACK_IMPORTED_MODULE_0__.PerspectiveCamera(45, width / height);\n  camera.position.set(-100, 150, 500);\n  camera.lookAt(new three__WEBPACK_IMPORTED_MODULE_0__.Vector3(0, 0, 0)); // 地面を作成\n\n  scene.add(new three__WEBPACK_IMPORTED_MODULE_0__.GridHelper(600));\n  scene.add(new three__WEBPACK_IMPORTED_MODULE_0__.AxesHelper(300)); // グループを作成\n\n  var group = new three__WEBPACK_IMPORTED_MODULE_0__.Group(); // 3D空間にグループを追加する\n\n  scene.add(group);\n\n  for (var i = 0; i < 10; i++) {\n    // 直方体を作成\n    var material = new three__WEBPACK_IMPORTED_MODULE_0__.MeshNormalMaterial();\n    var geometry = new three__WEBPACK_IMPORTED_MODULE_0__.SphereGeometry(30, 30, 30);\n    var mesh = new three__WEBPACK_IMPORTED_MODULE_0__.Mesh(geometry, material); // 配置座標を計算\n\n    var radian = i / 10 * Math.PI * 2;\n    mesh.position.set(200 * Math.cos(radian), // X座標\n    30, // Y座標\n    200 * Math.sin(radian) // Z座標\n    ); // グループに追加する\n\n    group.add(mesh);\n  }\n\n  tick(); // 毎フレーム時に実行されるループイベントです\n\n  function tick() {\n    // グループを回す\n    // group.rotateY(0.01)\n    group.rotation.y += 0.01;\n    renderer.render(scene, camera); // レンダリング\n\n    requestAnimationFrame(tick);\n  }\n}\n\n//# sourceURL=webpack://three-js/./src/js/group/three_group01.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n // ページの読み込みを待つ\n\nwindow.addEventListener('DOMContentLoaded', init);\n\nfunction init() {\n  // サイズを指定\n  var width = 960;\n  var height = 540; // レンダラーを作成\n\n  var renderer = new three__WEBPACK_IMPORTED_MODULE_0__.WebGLRenderer({\n    canvas: document.querySelector('#world01'),\n    antialias: true\n  });\n  renderer.setPixelRatio(window.devicePixelRatio);\n  renderer.setSize(width, height); // シーンを作成\n\n  var scene = new three__WEBPACK_IMPORTED_MODULE_0__.Scene(); // フォグを設定\n\n  scene.fog = new three__WEBPACK_IMPORTED_MODULE_0__.Fog(0x000000, 50, 2000); // カメラを作成\n\n  var camera = new three__WEBPACK_IMPORTED_MODULE_0__.PerspectiveCamera(45, width / height);\n  camera.position.set(-100, 150, 500);\n  camera.lookAt(new three__WEBPACK_IMPORTED_MODULE_0__.Vector3(0, 0, 0)); // 地面を作成\n\n  scene.add(new three__WEBPACK_IMPORTED_MODULE_0__.GridHelper(600));\n  scene.add(new three__WEBPACK_IMPORTED_MODULE_0__.AxesHelper(300)); // グループを作成\n\n  var group = new three__WEBPACK_IMPORTED_MODULE_0__.Group(); // 3D空間にグループを追加する\n\n  scene.add(group);\n\n  for (var i = 0; i < 10; i++) {\n    // 直方体を作成\n    var material = new three__WEBPACK_IMPORTED_MODULE_0__.MeshNormalMaterial();\n    var geometry = new three__WEBPACK_IMPORTED_MODULE_0__.SphereGeometry(30, 30, 30);\n    var mesh = new three__WEBPACK_IMPORTED_MODULE_0__.Mesh(geometry, material); // 配置座標を計算\n\n    var radian = i / 10 * Math.PI * 2;\n    mesh.position.set(200 * Math.cos(radian), // X座標\n    30, // Y座標\n    200 * Math.sin(radian) // Z座標\n    ); // グループに追加する\n\n    group.add(mesh);\n  }\n\n  tick(); // 毎フレーム時に実行されるループイベントです\n\n  function tick() {\n    // グループを回す\n    // group.rotateY(0.01)\n    group.rotation.y += 0.01;\n    renderer.render(scene, camera); // レンダリング\n\n    requestAnimationFrame(tick);\n  }\n}\n\n//# sourceURL=webpack://three-js/./src/js/world/three_world01.js?");
 
 /***/ }),
 
@@ -217,7 +217,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/bundle/group.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/bundle/world.js");
 /******/ 	
 /******/ })()
 ;

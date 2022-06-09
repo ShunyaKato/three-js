@@ -22,6 +22,7 @@ module.exports = {
     'fog': './src/bundle/fog.js',
     'sprite': './src/bundle/sprite.js',
     'group': './src/bundle/group.js',
+    'world': './src/bundle/world.js',
   },
   output: {
     path: __dirname + '/dist/js',
