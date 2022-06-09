@@ -23,6 +23,7 @@ module.exports = {
     'sprite': './src/bundle/sprite.js',
     'group': './src/bundle/group.js',
     'world': './src/bundle/world.js',
+    'screen': './src/bundle/screen.js',
   },
   output: {
     path: __dirname + '/dist/js',

@@ -30,23 +30,23 @@ eval("\n\nmodule.exports = function (i) {\n  return i[1];\n};\n\n//# sourceURL=w
 
 /***/ }),
 
-/***/ "./src/bundle/world.js":
-/*!*****************************!*\
-  !*** ./src/bundle/world.js ***!
-  \*****************************/
+/***/ "./src/bundle/screen.js":
+/*!******************************!*\
+  !*** ./src/bundle/screen.js ***!
+  \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_world_three_world01__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../js/world/three_world01 */ \"./src/js/world/three_world01.js\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../scss/style.scss */ \"./src/scss/style.scss\");\n\n\n\n//# sourceURL=webpack://three-js/./src/bundle/world.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_screen_three_screen01__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../js/screen/three_screen01 */ \"./src/js/screen/three_screen01.js\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../scss/style.scss */ \"./src/scss/style.scss\");\n\n\n\n//# sourceURL=webpack://three-js/./src/bundle/screen.js?");
 
 /***/ }),
 
-/***/ "./src/js/world/three_world01.js":
-/*!***************************************!*\
-  !*** ./src/js/world/three_world01.js ***!
-  \***************************************/
+/***/ "./src/js/screen/three_screen01.js":
+/*!*****************************************!*\
+  !*** ./src/js/screen/three_screen01.js ***!
+  \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n // ページの読み込みを待つ\n\nwindow.addEventListener('DOMContentLoaded', init);\n\nfunction init() {\n  // サイズを指定\n  var width = 960;\n  var height = 540;\n  var rot = 0; // レンダラーを作成\n\n  var renderer = new three__WEBPACK_IMPORTED_MODULE_0__.WebGLRenderer({\n    canvas: document.querySelector('#world01')\n  });\n  renderer.setPixelRatio(window.devicePixelRatio);\n  renderer.setSize(width, height); // シーンを作成\n\n  var scene = new three__WEBPACK_IMPORTED_MODULE_0__.Scene(); // フォグを設定\n\n  scene.fog = new three__WEBPACK_IMPORTED_MODULE_0__.Fog(0x000000, 50, 2000); // カメラを作成\n\n  var camera = new three__WEBPACK_IMPORTED_MODULE_0__.PerspectiveCamera(45, width / height);\n  camera.position.set(100, 150, 500);\n  camera.lookAt(new three__WEBPACK_IMPORTED_MODULE_0__.Vector3(0, 0, 0)); // 地面を作成\n\n  var plane2 = new three__WEBPACK_IMPORTED_MODULE_0__.GridHelper(600);\n  scene.add(plane2);\n  var plane = new three__WEBPACK_IMPORTED_MODULE_0__.AxesHelper(300);\n  scene.add(plane);\n  var group = new three__WEBPACK_IMPORTED_MODULE_0__.Group();\n  scene.add(group);\n  var targetMesh = new three__WEBPACK_IMPORTED_MODULE_0__.Mesh();\n\n  for (var i = 0; i < 10; i++) {\n    // 直方体を作成\n    var material = i === 0 ? new three__WEBPACK_IMPORTED_MODULE_0__.MeshNormalMaterial() : new three__WEBPACK_IMPORTED_MODULE_0__.MeshBasicMaterial();\n\n    var _geometry = new three__WEBPACK_IMPORTED_MODULE_0__.SphereGeometry(30, 30, 30);\n\n    var mesh = new three__WEBPACK_IMPORTED_MODULE_0__.Mesh(_geometry, material);\n    var radian = i / 10 * Math.PI * 2;\n    mesh.position.set(200 * Math.cos(radian), 30, 200 * Math.sin(radian));\n    group.add(mesh);\n\n    if (i === 0) {\n      targetMesh = mesh;\n    }\n  } // ライン\n\n\n  var geometry = new three__WEBPACK_IMPORTED_MODULE_0__.BufferGeometry().setFromPoints([new three__WEBPACK_IMPORTED_MODULE_0__.Vector3(0, 0, 0), new three__WEBPACK_IMPORTED_MODULE_0__.Vector3(50, 50, 0)]);\n  var line = new three__WEBPACK_IMPORTED_MODULE_0__.Line(geometry, new three__WEBPACK_IMPORTED_MODULE_0__.LineBasicMaterial());\n  scene.add(line);\n  tick(); // 毎フレーム時に実行されるループイベントです\n\n  function tick() {\n    group.rotation.x += 0.02;\n    group.rotation.y += 0.01; // ワールド座標を取得\n\n    var world = targetMesh.getWorldPosition(new three__WEBPACK_IMPORTED_MODULE_0__.Vector3()); // ラインを更新\n\n    var positions = line.geometry.attributes.position.array;\n    positions[0] = 0;\n    positions[1] = 0;\n    positions[2] = 0;\n    positions[3] = world.x;\n    positions[4] = world.y;\n    positions[5] = world.z;\n    line.geometry.attributes.position.needsUpdate = true;\n    renderer.render(scene, camera); // レンダリング\n\n    requestAnimationFrame(tick);\n  }\n}\n\n//# sourceURL=webpack://three-js/./src/js/world/three_world01.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n // ページの読み込みを待つ\n\nwindow.addEventListener('DOMContentLoaded', init);\n\nfunction init() {\n  // サイズを指定\n  var width = 960;\n  var height = 540;\n  var rot = 0; // レンダラーを作成\n\n  var renderer = new three__WEBPACK_IMPORTED_MODULE_0__.WebGLRenderer({\n    canvas: document.querySelector('#screen01')\n  });\n  renderer.setPixelRatio(window.devicePixelRatio);\n  renderer.setSize(width, height); // シーンを作成\n\n  var scene = new three__WEBPACK_IMPORTED_MODULE_0__.Scene(); // フォグを設定\n\n  scene.fog = new three__WEBPACK_IMPORTED_MODULE_0__.Fog(0x000000, 50, 2000); // カメラを作成\n\n  var camera = new three__WEBPACK_IMPORTED_MODULE_0__.PerspectiveCamera(45, width / height);\n  camera.position.set(100, 150, 500);\n  camera.lookAt(new three__WEBPACK_IMPORTED_MODULE_0__.Vector3(0, 0, 0)); // 地面を作成\n\n  var plane2 = new three__WEBPACK_IMPORTED_MODULE_0__.GridHelper(600);\n  scene.add(plane2);\n  var plane = new three__WEBPACK_IMPORTED_MODULE_0__.AxesHelper(300);\n  scene.add(plane);\n  var group = new three__WEBPACK_IMPORTED_MODULE_0__.Group();\n  scene.add(group);\n  var targetMesh = new three__WEBPACK_IMPORTED_MODULE_0__.Mesh();\n\n  for (var i = 0; i < 10; i++) {\n    // 直方体を作成\n    var material = i === 0 ? new three__WEBPACK_IMPORTED_MODULE_0__.MeshNormalMaterial() : new three__WEBPACK_IMPORTED_MODULE_0__.MeshBasicMaterial();\n\n    var _geometry = new three__WEBPACK_IMPORTED_MODULE_0__.SphereGeometry(30, 30, 30);\n\n    var mesh = new three__WEBPACK_IMPORTED_MODULE_0__.Mesh(_geometry, material);\n    var radian = i / 10 * Math.PI * 2;\n    mesh.position.set(200 * Math.cos(radian), 30, 200 * Math.sin(radian));\n    group.add(mesh);\n\n    if (i === 0) {\n      targetMesh = mesh;\n    }\n  } // ライン\n\n\n  var geometry = new three__WEBPACK_IMPORTED_MODULE_0__.BufferGeometry().setFromPoints([new three__WEBPACK_IMPORTED_MODULE_0__.Vector3(0, 0, 0), new three__WEBPACK_IMPORTED_MODULE_0__.Vector3(50, 50, 0)]);\n  var line = new three__WEBPACK_IMPORTED_MODULE_0__.Line(geometry, new three__WEBPACK_IMPORTED_MODULE_0__.LineBasicMaterial());\n  scene.add(line);\n  tick(); // 毎フレーム時に実行されるループイベントです\n\n  function tick() {\n    group.rotation.x += 0.02;\n    group.rotation.y += 0.01; // ワールド座標を取得\n\n    var world = targetMesh.getWorldPosition(new three__WEBPACK_IMPORTED_MODULE_0__.Vector3()); // ラインを更新\n\n    var positions = line.geometry.attributes.position.array;\n    positions[0] = 0;\n    positions[1] = 0;\n    positions[2] = 0;\n    positions[3] = world.x;\n    positions[4] = world.y;\n    positions[5] = world.z;\n    line.geometry.attributes.position.needsUpdate = true;\n    renderer.render(scene, camera); // レンダリング\n\n    requestAnimationFrame(tick);\n  }\n}\n\n//# sourceURL=webpack://three-js/./src/js/screen/three_screen01.js?");
 
 /***/ }),
 
@@ -217,7 +217,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/bundle/world.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/bundle/screen.js");
 /******/ 	
 /******/ })()
 ;
