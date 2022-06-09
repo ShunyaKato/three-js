@@ -1,7 +1,2 @@
-import '../js/material/three_material01'
-import '../js/material/three_material02'
-import '../js/material/three_material03'
-import '../js/material/three_material04'
-import '../js/material/three_material05'
-import '../js/material/three_material06'
+import '../js/light/three_light01'
 import '../scss/style.scss'
