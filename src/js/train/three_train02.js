@@ -1,22 +1,22 @@
-import * as THREE from 'three';
+import * as THREE from 'three'
 
 // ページの読み込みを待つ
-window.addEventListener('DOMContentLoaded', init);
+window.addEventListener('DOMContentLoaded', init)
 
 function init() {
 
   // サイズを指定
-  const width = 960;
-  const height = 540;
+  const width = 960
+  const height = 540
 
   // レンダラーを作成
   const renderer = new THREE.WebGLRenderer({
     canvas: document.querySelector('#train02')
   });
-  renderer.setSize(width, height);
+  renderer.setSize(width, height)
 
   // シーンを作成
-  const scene = new THREE.Scene();
+  const scene = new THREE.Scene()
 
   // カメラを作成
   const camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);
@@ -39,8 +39,8 @@ function init() {
   // 毎フレーム時に実行されるループイベントです
   function tick() {
     mesh.rotation.y += 0.01;
-    renderer.render(scene, camera); // レンダリング
+    renderer.render(scene, camera) // レンダリング
 
-    requestAnimationFrame(tick);
+    requestAnimationFrame(tick)
   }
 }

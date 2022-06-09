@@ -1,26 +1,26 @@
-import * as THREE from 'three';
+import * as THREE from 'three'
 
 // ページの読み込みを待つ
-window.addEventListener('DOMContentLoaded', init);
+window.addEventListener('DOMContentLoaded', init)
 
 function init() {
 
   // サイズを指定
-  const width = 960;
-  const height = 540;
+  const width = 960
+  const height = 540
 
   // レンダラーを作成
   const renderer = new THREE.WebGLRenderer({
     canvas: document.querySelector('#camera02'),
     antialias: true,
   });
-  renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.setSize(width, height);
+  renderer.setPixelRatio(window.devicePixelRatio)
+  renderer.setSize(width, height)
   // レンダラー：シャドウを有効に
   renderer.shadowMap.enabled = true
 
   // シーンを作成
-  const scene = new THREE.Scene();
+  const scene = new THREE.Scene()
 
   // カメラを作成
   const camera = new THREE.OrthographicCamera(-480, +480, 270, -270);
@@ -89,7 +89,7 @@ function init() {
     camera.position.z = 500 * Math.cos(Date.now() / 2000)
     // 原点方向を見つめる
     camera.lookAt(new THREE.Vector3(0, 0, 0))
-    renderer.render(scene, camera); // レンダリング
-    requestAnimationFrame(tick);
+    renderer.render(scene, camera) // レンダリング
+    requestAnimationFrame(tick)
   }
 }

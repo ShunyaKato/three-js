@@ -1,28 +1,28 @@
-import * as THREE from 'three';
+import * as THREE from 'three'
 
 // ページの読み込みを待つ
-window.addEventListener('DOMContentLoaded', init);
+window.addEventListener('DOMContentLoaded', init)
 
 function init() {
 
   // サイズを指定
-  const width = 960;
-  const height = 540;
+  const width = 960
+  const height = 540
 
   // レンダラーを作成
   const renderer = new THREE.WebGLRenderer({
     canvas: document.querySelector('#light03'),
     antialias: true,
   });
-  renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.setSize(width, height);
+  renderer.setPixelRatio(window.devicePixelRatio)
+  renderer.setSize(width, height)
 
   // シーンを作成
-  const scene = new THREE.Scene();
+  const scene = new THREE.Scene()
 
   // カメラを作成
   const camera = new THREE.PerspectiveCamera(45, width / height);
-  camera.position.set(20, 20, 20);
+  camera.position.set(20, 20, 20)
   camera.lookAt(new THREE.Vector3(0, 0, 0))
 
   // 床を作成
@@ -53,7 +53,7 @@ function init() {
 
   // 毎フレーム時に実行されるループイベントです
   function tick() {
-    renderer.render(scene, camera); // レンダリング
+    renderer.render(scene, camera) // レンダリング
 
     // 照明の位置を更新
     const t = Date.now() / 500
@@ -64,6 +64,6 @@ function init() {
     light.position.set(lx, ly, lz)
     lightHelper.update()
 
-    requestAnimationFrame(tick);
+    requestAnimationFrame(tick)
   }
 }

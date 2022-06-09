@@ -11,7 +11,7 @@ function init() {
 
   // レンダラーを作成
   const renderer = new THREE.WebGLRenderer({
-    canvas: document.querySelector('#camera01'),
+    canvas: document.querySelector('#fog01'),
     antialias: true,
   });
   renderer.setPixelRatio(window.devicePixelRatio)
@@ -22,8 +22,12 @@ function init() {
   // シーンを作成
   const scene = new THREE.Scene()
 
+  // フォグを設定
+  scene.fog = new THREE.Fog(0x000000, 50, 2000)
+
   // カメラを作成
-  const camera = new THREE.PerspectiveCamera(90, width / height);
+  const camera = new THREE.PerspectiveCamera(45, width / height)
+
 
   // 光源を作成
   {
