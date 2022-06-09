@@ -30,13 +30,13 @@ eval("\n\nmodule.exports = function (i) {\n  return i[1];\n};\n\n//# sourceURL=w
 
 /***/ }),
 
-/***/ "./src/bundle/fog.js":
-/*!***************************!*\
-  !*** ./src/bundle/fog.js ***!
-  \***************************/
+/***/ "./src/bundle/sprite.js":
+/*!******************************!*\
+  !*** ./src/bundle/sprite.js ***!
+  \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_fog_three_fog01__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../js/fog/three_fog01 */ \"./src/js/fog/three_fog01.js\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../scss/style.scss */ \"./src/scss/style.scss\");\n\n\n\n//# sourceURL=webpack://three-js/./src/bundle/fog.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_fog_three_fog01__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../js/fog/three_fog01 */ \"./src/js/fog/three_fog01.js\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../scss/style.scss */ \"./src/scss/style.scss\");\n\n\n\n//# sourceURL=webpack://three-js/./src/bundle/sprite.js?");
 
 /***/ }),
 
@@ -217,7 +217,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/bundle/fog.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/bundle/sprite.js");
 /******/ 	
 /******/ })()
 ;

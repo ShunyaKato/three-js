@@ -20,6 +20,7 @@ module.exports = {
     'shade': './src/bundle/shade.js',
     'camera': './src/bundle/camera.js',
     'fog': './src/bundle/fog.js',
+    'sprite': './src/bundle/sprite.js',
   },
   output: {
     path: __dirname + '/dist/js',
