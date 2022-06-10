@@ -24,6 +24,7 @@ module.exports = {
     'group': './src/bundle/group.js',
     'world': './src/bundle/world.js',
     'screen': './src/bundle/screen.js',
+    'model': './src/bundle/model.js',
   },
   output: {
     path: __dirname + '/dist/js',
