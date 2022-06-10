@@ -25,6 +25,7 @@ module.exports = {
     'world': './src/bundle/world.js',
     'screen': './src/bundle/screen.js',
     'model': './src/bundle/model.js',
+    'resize': './src/bundle/resize.js',
   },
   output: {
     path: __dirname + '/dist/js',
