@@ -30,23 +30,23 @@ eval("\n\nmodule.exports = function (i) {\n  return i[1];\n};\n\n//# sourceURL=w
 
 /***/ }),
 
-/***/ "./src/bundle/sprite.js":
-/*!******************************!*\
-  !*** ./src/bundle/sprite.js ***!
-  \******************************/
+/***/ "./src/bundle/raycast.js":
+/*!*******************************!*\
+  !*** ./src/bundle/raycast.js ***!
+  \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_sprite_three_sprite01__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../js/sprite/three_sprite01 */ \"./src/js/sprite/three_sprite01.js\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../scss/style.scss */ \"./src/scss/style.scss\");\n\n\n\n//# sourceURL=webpack://three-js/./src/bundle/sprite.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_raycast_three_raycast01__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../js/raycast/three_raycast01 */ \"./src/js/raycast/three_raycast01.js\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../scss/style.scss */ \"./src/scss/style.scss\");\n\n\n\n//# sourceURL=webpack://three-js/./src/bundle/raycast.js?");
 
 /***/ }),
 
-/***/ "./src/js/sprite/three_sprite01.js":
-/*!*****************************************!*\
-  !*** ./src/js/sprite/three_sprite01.js ***!
-  \*****************************************/
+/***/ "./src/js/raycast/three_raycast01.js":
+/*!*******************************************!*\
+  !*** ./src/js/raycast/three_raycast01.js ***!
+  \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n // ページの読み込みを待つ\n\nwindow.addEventListener('DOMContentLoaded', init);\n\nfunction init() {\n  // サイズを指定\n  var width = 960;\n  var height = 540; // レンダラーを作成\n\n  var renderer = new three__WEBPACK_IMPORTED_MODULE_0__.WebGLRenderer({\n    canvas: document.querySelector('#sprite01'),\n    antialias: true\n  });\n  renderer.setPixelRatio(window.devicePixelRatio);\n  renderer.setSize(width, height);\n  renderer.setClearColor(0xf9f9f9, 1.0); // シーンを作成\n\n  var scene = new three__WEBPACK_IMPORTED_MODULE_0__.Scene();\n  scene.fog = new three__WEBPACK_IMPORTED_MODULE_0__.Fog(0xf9f9f9, 200, 300); // カメラを作成\n\n  var camera = new three__WEBPACK_IMPORTED_MODULE_0__.PerspectiveCamera(45, width / height); // マテリアルを作成する\n\n  var material = new three__WEBPACK_IMPORTED_MODULE_0__.SpriteMaterial({\n    map: new three__WEBPACK_IMPORTED_MODULE_0__.TextureLoader().load('../img/star.png')\n  }); // フォグ（霞）を有効にする\n\n  material.fog = true; // ビルボードを作成\n\n  for (var i = 0; i < 1000; i++) {\n    var sprite = new three__WEBPACK_IMPORTED_MODULE_0__.Sprite(material); // ランダムな座標に配置\n\n    sprite.position.x = 500 * (Math.random() - 0.5);\n    sprite.position.y = 100 * Math.random() - 40;\n    sprite.position.z = 500 * (Math.random() - 0.5); // 必要に応じてスケールを調整\n\n    sprite.scale.set(10, 10, 10);\n    scene.add(sprite);\n  } // 地面を作成\n\n\n  var plane = new three__WEBPACK_IMPORTED_MODULE_0__.GridHelper(300, 10, 0x888888, 0x888888);\n  plane.position.y = -40;\n  scene.add(plane);\n  tick(); // 毎フレーム時に実行されるループイベントです\n\n  function tick() {\n    // カメラの自動移動\n    camera.position.x = 100 * Math.sin(Date.now() / 2000);\n    camera.position.z = 100 * Math.cos(Date.now() / 2000);\n    camera.position.y = 50 * Math.sin(Date.now() / 1000) + 60;\n    camera.lookAt(new three__WEBPACK_IMPORTED_MODULE_0__.Vector3(0, 0, 0));\n    renderer.render(scene, camera); // レンダリング\n\n    requestAnimationFrame(tick);\n  }\n}\n\n//# sourceURL=webpack://three-js/./src/js/sprite/three_sprite01.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n // ページの読み込みを待つ\n\nwindow.addEventListener('DOMContentLoaded', init);\n\nfunction init() {\n  // サイズを指定\n  var width = 960;\n  var height = 540;\n  var rot = 0; // マウス座標管理用のベクトルを作成\n\n  var mouse = new three__WEBPACK_IMPORTED_MODULE_0__.Vector2(); // canvas 要素の参照を取得する\n\n  var canvas = document.querySelector('#raycast01'); // レンダラーを作成\n\n  var renderer = new three__WEBPACK_IMPORTED_MODULE_0__.WebGLRenderer({\n    canvas: canvas\n  });\n  renderer.setPixelRatio(window.devicePixelRatio);\n  renderer.setSize(width, height); // シーンを作成\n\n  var scene = new three__WEBPACK_IMPORTED_MODULE_0__.Scene(); // カメラを作成\n\n  var camera = new three__WEBPACK_IMPORTED_MODULE_0__.PerspectiveCamera(45, width / height); // camera.position.set(0, 0, 1000)\n\n  var geometry = new three__WEBPACK_IMPORTED_MODULE_0__.BoxBufferGeometry(50, 50, 50); // マウスとの交差を調べたいものは配列に格納する\n\n  var meshList = [];\n\n  for (var i = 0; i < 200; i++) {\n    var material = new three__WEBPACK_IMPORTED_MODULE_0__.MeshStandardMaterial({\n      color: 0xffffff\n    });\n    var mesh = new three__WEBPACK_IMPORTED_MODULE_0__.Mesh(geometry, material);\n    mesh.position.x = (Math.random() - 0.5) * 800;\n    mesh.position.y = (Math.random() - 0.5) * 800;\n    mesh.position.z = (Math.random() - 0.5) * 800;\n    mesh.rotation.x = Math.random() * 2 * Math.PI;\n    mesh.rotation.y = Math.random() * 2 * Math.PI;\n    mesh.rotation.z = Math.random() * 2 * Math.PI;\n    scene.add(mesh);\n    meshList.push(mesh);\n  } // 平行光源\n\n\n  var directionalLight = new three__WEBPACK_IMPORTED_MODULE_0__.DirectionalLight(0xffffff);\n  directionalLight.position.set(1, 1, 1);\n  scene.add(directionalLight); // 環境光源\n\n  var ambientLight = new three__WEBPACK_IMPORTED_MODULE_0__.AmbientLight(0x333333);\n  scene.add(ambientLight); // レイキャストを作成\n\n  var raycaster = new three__WEBPACK_IMPORTED_MODULE_0__.Raycaster();\n  canvas.addEventListener('mousemove', handleMouseMove);\n  tick(); // マウスを動かしたときのイベント\n\n  function handleMouseMove(event) {\n    var element = event.currentTarget; // canvas要素上のXY座標\n\n    var x = event.clientX - element.offsetLeft;\n    var y = event.clientY - element.offsetTop; // canvas要素の幅・高さ\n\n    var w = element.offsetWidth;\n    var h = element.offsetHeight; // -1〜+1の範囲で現在のマウス座標を登録する\n\n    mouse.x = x / w * 2 - 1;\n    mouse.y = -(y / h) * 2 + 1;\n  } // 毎フレーム時に実行されるループイベントです\n\n\n  function tick() {\n    // レイキャスト = マウス位置からまっすぐに伸びる光線ベクトルを生成\n    raycaster.setFromCamera(mouse, camera); // その光線とぶつかったオブジェクトを得る\n\n    var interesects = raycaster.intersectObjects(meshList);\n    meshList.map(function (mesh) {\n      // 交差しているオブジェクトが1つ以上存在し、\n      // 交差しているオブジェクトの1番目(最前面)のものだったら\n      if (interesects.length > 0 && mesh === interesects[0].object) {\n        // 色を赤くする\n        mesh.material.color.setHex(0xff0000);\n      } else {\n        // それ以外は元の色にする\n        mesh.material.color.setHex(0xffffff);\n      }\n    });\n    rot += 0.1;\n    var radian = rot * Math.PI / 180;\n    camera.position.x = 1000 * Math.sin(radian);\n    camera.position.z = 1000 * Math.cos(radian);\n    camera.lookAt(new three__WEBPACK_IMPORTED_MODULE_0__.Vector3(0, 0, 0));\n    renderer.render(scene, camera); // レンダリング\n\n    requestAnimationFrame(tick);\n  }\n}\n\n//# sourceURL=webpack://three-js/./src/js/raycast/three_raycast01.js?");
 
 /***/ }),
 
@@ -217,7 +217,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/bundle/sprite.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/bundle/raycast.js");
 /******/ 	
 /******/ })()
 ;

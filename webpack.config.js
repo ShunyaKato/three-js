@@ -26,6 +26,7 @@ module.exports = {
     'screen': './src/bundle/screen.js',
     'model': './src/bundle/model.js',
     'resize': './src/bundle/resize.js',
+    'raycast': './src/bundle/raycast.js',
   },
   output: {
     path: __dirname + '/dist/js',
