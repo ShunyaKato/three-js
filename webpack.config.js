@@ -28,6 +28,7 @@ module.exports = {
     'resize': './src/bundle/resize.js',
     'raycast': './src/bundle/raycast.js',
     'particle': './src/bundle/particle.js',
+    'combine': './src/bundle/combine.js',
   },
   output: {
     path: __dirname + '/dist/js',
