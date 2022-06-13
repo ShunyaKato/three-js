@@ -27,6 +27,7 @@ module.exports = {
     'model': './src/bundle/model.js',
     'resize': './src/bundle/resize.js',
     'raycast': './src/bundle/raycast.js',
+    'particle': './src/bundle/particle.js',
   },
   output: {
     path: __dirname + '/dist/js',
