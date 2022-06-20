@@ -29,6 +29,7 @@ module.exports = {
     'raycast': './src/bundle/raycast.js',
     'particle': './src/bundle/particle.js',
     'combine': './src/bundle/combine.js',
+    'particle_anime01': './src/bundle/particle_anime01.js',
   },
   output: {
     path: __dirname + '/dist/js',

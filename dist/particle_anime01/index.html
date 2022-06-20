@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>particle_anime01</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+  <div id="particle_anime01"></div>
+  <!-- vertexShader -->
+  <script id="js-vertex-shader" type="x-shader/x-vertex">
+  attribute vec3 position;
+  attribute vec3 color;
+  attribute float alpha;
+  uniform mat4 modelViewMatrix;
+  uniform mat4 projectionMatrix;
+  varying vec3 v_color;
+  varying float v_alpla;
+  
+  void main() {
+      v_color = color;
+      v_alpla = alpha;
+  
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0 );
+      gl_PointSize = 3.0;
+  }
+  </script>
+
+  <!-- fragmentShader -->
+  <script id="js-fragment-shader" type="x-shader/x-fragment">
+  precision mediump float;
+  
+  varying vec3 v_color;
+  varying float v_alpla;
+  
+  void main() {
+      vec2 temp = gl_PointCoord - vec2(0.5);
+      float f = dot(temp, temp);
+      if (f > 0.25 ) {
+          discard;
+      }
+  
+      gl_FragColor = vec4(v_color, v_alpla);
+  }
+  </script>
+  <script src="../js/particle_anime01.bundle.js"></script>
+</body>
+
+</html>
